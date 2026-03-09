@@ -20,7 +20,7 @@ const features = [
     icon: "🎵",
     title: "Live Music",
     description: "Local artists and performers bringing the sounds of Atlanta to the park.",
-    image: "404day-music-festival-dj-atlanta-braves.jpg",
+    image: "404day-atlanta-music-festival-live-music-guitar-rock-and-roll.jpg",
   },
   {
     icon: "🍑",
@@ -59,10 +59,10 @@ export default function HomePage() {
               priority
             />
           </div>
-          <p className="text-xl sm:text-2xl md:text-3xl font-light text-white/95 mb-2 tracking-wide">
+          <p className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2 tracking-wide">
             Where Atlanta&apos;s spirit shines brighter than ever.
           </p>
-          <p className="text-base sm:text-lg text-white/80 max-w-2xl mx-auto mb-10">
+          <p className="text-base sm:text-lg font-bold text-white max-w-2xl mx-auto mb-10">
             April 4th, 2026 · Piedmont Park · Free to attend
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -82,7 +82,7 @@ export default function HomePage() {
             ].map((stat) => (
               <div key={stat.label} className="text-center">
                 <div className="text-3xl sm:text-4xl font-black text-white">{stat.value}</div>
-                <div className="text-white/80 text-sm mt-1">{stat.label}</div>
+                <div className="text-white text-sm font-bold mt-1">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -183,7 +183,7 @@ export default function HomePage() {
             <div key={feature.title} className="card overflow-hidden !p-0">
               <div className="aspect-[4/3] relative">
                 <Image
-                  src={`${basePath}/gallery/${feature.image}`}
+                  src={"image" in feature && (feature.image as string).startsWith("/") ? `${basePath}${feature.image}` : `${basePath}/gallery/${feature.image}`}
                   alt={feature.title}
                   fill
                   className="object-cover"

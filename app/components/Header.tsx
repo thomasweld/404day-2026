@@ -53,8 +53,8 @@ export default function Header() {
                 href={link.href}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                   isActive(link.href)
-                    ? "text-[#e87851] bg-[#f4b59e]/10"
-                    : "text-[#5a5a5a] hover:text-[#e87851] hover:bg-[#f4b59e]/10"
+                    ? "text-[#FF8A3D] bg-[#FF8A3D]/20 font-semibold"
+                    : "text-[#5a5a5a] hover:text-[#FF8A3D] hover:bg-[#FF8A3D]/10"
                 }`}
               >
                 {link.label}

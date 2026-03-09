@@ -139,23 +139,17 @@ html[data-base-path="/404day"] .hero-peaches {
   background-image: url("/404day/404day-atlanta-music-festival-hero.png");
 }
 
-/* Dark overlay so white logo + text read clearly */
-.hero-peaches::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.55);
-  pointer-events: none;
-}
 
+/* Radial dark gradient centered at 40% from bottom for text legibility */
 .hero-peaches::after {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: 1;
   background: radial-gradient(
-    ellipse 100% 80% at 50% 50%,
-    transparent 0%,
-    rgba(0, 0, 0, 0.3) 100%
+    ellipse 80% 60% at 50% 60%,
+    rgba(0, 0, 0, 0.55) 0%,
+    transparent 100%
   );
   pointer-events: none;
 }

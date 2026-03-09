@@ -5,6 +5,7 @@ import Image from "next/image";
 import { basePath } from "../lib/constants";
 
 const galleryImages = [
+  "404day-atlanta-music-festival-live-music-guitar-rock-and-roll.jpg",
   "404day-music-festival-crowd-dj-stage-backstage.JPG",
   "404day-music-festival-atlanta-falcons.jpg",
   "404day-music-festival-dj-booth.jpg",

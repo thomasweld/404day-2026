@@ -3,7 +3,7 @@ import Image from "next/image";
 import { basePath } from "../lib/constants";
 
 const schedule = [
-  { time: "All Day", title: "Music & Performances", stage: "Main Stage", type: "music", image: "404day-music-festival-dj-booth.jpg" },
+  { time: "All Day", title: "Music & Performances", stage: "Main Stage", type: "music", image: "404day-music-festival-dj-booth-crop.jpg" },
   { time: "All Day", title: "Food & Vendors", stage: "Vendor Village", type: "food", image: "404day-music-festival-vitamin-water-vendor.jpg" },
   { time: "All Day", title: "Community Vibes", stage: "Piedmont Park", type: "general", image: "404day-music-festival-crowd-dance-party-1.JPG" },
 ];
