@@ -10,9 +10,9 @@ import { basePath } from "../lib/constants";
 const timeline = [
   {
     year: "2011",
-    title: "Jagervision at the Clermont Lounge",
+    title: "Jaegervizion at the Clermont Lounge",
     summary: "Mighty High Coup becomes a regular at the legendary Clermont Lounge Wednesday night series.",
-    body: `Me and my rap group Mighty High Coup were blessed enough to consistently be asked to be part of an event series at the Clermont Lounge called Jagervision, which took place on Wednesday nights. That residency planted the seed for everything that followed.`,
+    body: `Me and my rap group Mighty High Coup were blessed enough to consistently be asked to be part of an event series at the Clermont Lounge called Jaegervizion, which took place on Wednesday nights. That residency planted the seed for everything that followed.`,
     image: null,
   },
   {
@@ -26,7 +26,7 @@ const timeline = [
     year: "Apr 4, 2012",
     title: "The First 404 Day at the Clermont Lounge",
     summary: "404 Day is born at the Clermont Lounge with $0 budget and a network of friends.",
-    body: `I approached the Jagervision team and asked if we could secure the Clermont Lounge for April 4, 2012. They hadn't booked anything yet, and we were on.\n\nWe booked rap, hip hop, and dubstep out of my direct network. Frankie D opened with hip hop and turntablist skills, followed by The Wheeler Boys, then Mighty High Coup, closing with DJ Mayhem.\n\nI started this with literally $0. In hindsight I should have booked Cool Breeze the Creator Of The Dirty South since he was already in my personal network, and I wish I had booked some women on that first event. I've learned a great deal about Atlanta history, culture, and the art of being inclusive over the last 15 years.\n\nAt the time, I was almost certain that by 2013 Coca-Cola, Delta, and Home Depot would all be throwing bags of money at me. That foolish childlike optimism has proven to be my biggest asset and my largest liability at the same time.`,
+    body: `I approached the Jaegervizion team and asked if we could secure the Clermont Lounge for April 4, 2012. They hadn't booked anything yet, and we were on.\n\nWe booked rap, hip hop, and dubstep out of my direct network. Frankie D opened with hip hop and turntablist skills, followed by The Wheeler Boys, then Mighty High Coup, closing with DJ Mayhem.\n\nI started this with literally $0. In hindsight I should have booked Cool Breeze the Creator Of The Dirty South since he was already in my personal network, and I wish I had booked some women on that first event. I've learned a great deal about Atlanta history, culture, and the art of being inclusive over the last 15 years.\n\nAt the time, I was almost certain that by 2013 Coca-Cola, Delta, and Home Depot would all be throwing bags of money at me. That foolish childlike optimism has proven to be my biggest asset and my largest liability at the same time.`,
     image: null,
   },
   {
