@@ -65,12 +65,12 @@ export default function ContactPage() {
             Contact Us
           </div>
           <h1 className="text-5xl sm:text-6xl md:text-7xl font-black mb-6">
-            <span className="text-[#2d2d2d]">Get in</span>
+            <span className="text-[#1A2B3C]">Get in</span>
             <br />
             <span className="gradient-text">Touch</span>
           </h1>
           <p className="text-lg sm:text-xl text-[#5a4a3a] leading-relaxed max-w-2xl mx-auto">
-            Vendors, performers, media, or sponsorship — we want to hear from you.
+            Vendors, performers, media, or sponsors: we want to hear from you.
           </p>
         </div>
       </section>

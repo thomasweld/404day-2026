@@ -24,12 +24,12 @@ export default function EventsPage() {
             Free to Attend
           </div>
           <h1 className="text-5xl sm:text-6xl md:text-7xl font-black mb-6">
-            <span className="text-[#2d2d2d]">404Day 2026</span>
+            <span className="text-[#1A2B3C]">404Day 2026</span>
             <br />
             <span className="gradient-text">Piedmont Park</span>
           </h1>
           <p className="text-lg sm:text-xl text-[#5a4a3a] leading-relaxed max-w-2xl mx-auto mb-10">
-            April 4th, 2026. Music, food, and the vibrant community spirit that makes Atlanta special. RSVP free — we can&apos;t wait to celebrate with you.
+            April 4th, 2026. Music, food, and the vibrant community spirit that makes Atlanta special. RSVP free. We can&apos;t wait to celebrate with you.
           </p>
           <Link href="/tickets" className="btn-primary text-base px-10 py-4 inline-block">
             RSVP FREE
@@ -41,7 +41,7 @@ export default function EventsPage() {
       <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="section-title">What to Expect</h2>
-          <p className="section-subtitle mx-auto">From the music to the food to the vibrant community spirit — a day you won&apos;t forget.</p>
+          <p className="section-subtitle mx-auto">From the music to the food to the vibrant community spirit, it&apos;s a day you won&apos;t forget.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {schedule.map((item) => (
@@ -122,7 +122,7 @@ export default function EventsPage() {
       <section className="py-20 px-4 sm:px-6 lg:px-8 text-center">
         <h2 className="text-3xl font-black text-[#2d2d2d] mb-4">Ready to Join Us?</h2>
         <p className="text-[#5a5a5a] mb-8 max-w-xl mx-auto">
-          RSVP free and we&apos;ll see you April 4th in Piedmont Park. Music, food, community — let&apos;s celebrate Atlanta together.
+          RSVP free and we&apos;ll see you April 4th in Piedmont Park. Music, food, community. Let&apos;s celebrate Atlanta together.
         </p>
         <Link href="/tickets" className="btn-primary inline-block">
           RSVP FREE

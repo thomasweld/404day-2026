@@ -91,12 +91,12 @@ export default function SponsorshipPage() {
             Sponsorship
           </div>
           <h1 className="text-5xl sm:text-6xl md:text-7xl font-black mb-6">
-            <span className="text-[#2d2d2d]">Grow With</span>
+            <span className="text-[#1A2B3C]">Grow With</span>
             <br />
             <span className="gradient-text">404Day</span>
           </h1>
           <p className="text-lg sm:text-xl text-[#5a4a3a] leading-relaxed max-w-2xl mx-auto mb-10">
-            Partner with Atlanta&apos;s premier cultural celebration. Your support helps keep 404Day free in the park — and puts your brand in front of our vibrant community.
+            Partner with Atlanta&apos;s premier cultural celebration. Your support helps keep 404Day free in the park and puts your brand in front of our vibrant community.
           </p>
           <a href="mailto:sponsors@404day.com?subject=Sponsorship%20Inquiry" className="btn-primary text-base px-8 py-4">
             Get in Touch
@@ -110,7 +110,7 @@ export default function SponsorshipPage() {
           <div className="text-center mb-16">
             <h2 className="section-title">Why Sponsor 404Day?</h2>
             <p className="section-subtitle mx-auto">
-              Your support keeps 404Day free in the park. Patron is our headlining sponsor — without sponsors, this event would not be possible.
+              Your support keeps 404Day free in the park. Patron is our headlining sponsor. Without sponsors, this event would not be possible.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -242,7 +242,7 @@ export default function SponsorshipPage() {
               {
                 icon: "🍑",
                 title: "Community Impact",
-                desc: "Help keep 404Day free for everyone — like Patron does.",
+                desc: "Help keep 404Day free for everyone, just like Patron does.",
               },
               {
                 icon: "💌",

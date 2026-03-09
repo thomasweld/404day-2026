@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { basePath } from "./lib/constants";
+import FlyerThumbnail from "./components/FlyerThumbnail";
 
 const upcomingEvents = [
   {
@@ -30,7 +31,7 @@ const features = [
   {
     icon: "🤝",
     title: "Community Spirit",
-    description: "A highlight of our city's cultural calendar — come celebrate with your neighbors.",
+    description: "A highlight of our city's cultural calendar. Come celebrate with your neighbors.",
     image: "404day-music-festival-crowd-dance-party-1.JPG",
   },
   {
@@ -47,20 +48,17 @@ export default function HomePage() {
       {/* Hero Section — white logo, white text, blue/green buttons */}
       <section className="relative flex items-center justify-center overflow-hidden hero-peaches py-20">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          {/* Large white logo */}
+          {/* Cloud logo */}
           <div className="flex justify-center mb-8">
             <Image
-              src={`${basePath}/404day-logo-white.png`}
+              src={`${basePath}/404day-cloud-logo.png`}
               alt="404Day"
-              width={220}
-              height={220}
+              width={480}
+              height={240}
               className="drop-shadow-2xl object-contain"
               priority
             />
           </div>
-          <h1 className="text-7xl sm:text-8xl md:text-9xl font-black text-white mb-6 leading-none tracking-tight drop-shadow-lg">
-            404Day
-          </h1>
           <p className="text-xl sm:text-2xl md:text-3xl font-light text-white/95 mb-2 tracking-wide">
             Where Atlanta&apos;s spirit shines brighter than ever.
           </p>
@@ -89,9 +87,88 @@ export default function HomePage() {
             ))}
           </div>
         </div>
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/70 text-xs">
-          <span>Scroll to explore</span>
-          <div className="w-px h-12 bg-gradient-to-b from-white/50 to-transparent" />
+      </section>
+
+      {/* About Teaser */}
+      <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div>
+            <div className="inline-block px-3 py-1 rounded-full bg-[#9ec367]/20 text-[#9ec367] text-xs font-semibold uppercase tracking-wider mb-6">
+              Our Story
+            </div>
+            <h2 className="section-title">Celebrating Atlanta</h2>
+            <p className="text-[#5a5a5a] leading-relaxed mb-6">
+              404Day is a celebration of Atlanta culture: our music, our food, and the community spirit that makes
+              our city special. Every April 4th, we come together in Piedmont Park for a free day of good vibes.
+            </p>
+            <p className="text-[#5a5a5a] leading-relaxed mb-8">
+              From the music to the food to the vibrant community spirit, 404Day has become a highlight of our
+              city&apos;s cultural calendar. We&apos;re grateful for the amazing community that shows up year after year.
+              2026 marks our <span className="font-semibold text-[#FF8A3D]">15th annual event</span>, and we&apos;re just getting started.
+            </p>
+            <Link href="/about" className="btn-primary">
+              Our Full Story →
+            </Link>
+          </div>
+          <div className="relative">
+            <div className="aspect-square rounded-2xl overflow-hidden border border-[#f4b59e]/50 relative">
+              <Image
+                src={`${basePath}/gallery/404day-music-festival-crowd-wide-piedmont-park-atlanta-ga.JPG`}
+                alt="404Day in Piedmont Park, Atlanta"
+                width={600}
+                height={600}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
+                <p className="text-white font-medium text-sm">Est. 2012 · Atlanta, GA</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Upcoming Events */}
+      <section className="py-24 bg-[#e8f0e4]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-16 gap-4">
+            <div>
+              <h2 className="section-title">Upcoming Events</h2>
+              <p className="section-subtitle">Mark your calendar. These are the moments that matter.</p>
+            </div>
+            <Link href="/events" className="btn-secondary text-sm whitespace-nowrap">
+              View All Events →
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+            {/* Flyer thumbnail */}
+            <FlyerThumbnail src={`${basePath}/404day-atlanta-music-festival-flyer.jpg`} />
+
+            {/* Event cards */}
+            <div className="flex flex-col gap-6">
+              {upcomingEvents.map((event) => (
+                <Link key={event.id} href="/tickets" className="card group cursor-pointer block no-underline">
+                  <div className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: event.color }}>
+                    {event.date} · {event.year}
+                  </div>
+                  <h3 className="text-xl font-bold text-[#1A2B3C] mb-2 group-hover:text-[#FF8A3D] transition-colors">
+                    {event.title}
+                  </h3>
+                  <p className="text-[#5a5a5a] text-sm mb-4">{event.location}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {event.tags.map((tag, i) => {
+                      const tagColors = ["#FF8A3D", "#9ec367", "#00AEEF", "#fac355"];
+                      const c = tagColors[i % tagColors.length];
+                      return (
+                        <span key={tag} className="px-3 py-1 rounded-full text-xs font-medium" style={{ background: `${c}20`, color: c }}>
+                          {tag}
+                        </span>
+                      );
+                    })}
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -122,82 +199,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Upcoming Events */}
-      <section className="py-24 bg-[#e8f0e4]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-16 gap-4">
-            <div>
-              <h2 className="section-title">Upcoming Events</h2>
-              <p className="section-subtitle">Mark your calendar. These are the moments that matter.</p>
-            </div>
-            <Link href="/events" className="btn-secondary text-sm whitespace-nowrap">
-              View All Events →
-            </Link>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {upcomingEvents.map((event) => (
-              <div key={event.id} className="card group cursor-pointer">
-                <div className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: event.color }}>
-                  {event.date} · {event.year}
-                </div>
-                <h3 className="text-xl font-bold text-[#2d2d2d] mb-2 group-hover:text-[#e87851] transition-colors">
-                  {event.title}
-                </h3>
-                <p className="text-[#5a5a5a] text-sm mb-4">{event.location}</p>
-                <div className="flex flex-wrap gap-2">
-                  {event.tags.map((tag, i) => {
-                    const tagColors = ["#fac355", "#9ec367", "#e87851", "#f4b59e"];
-                    const c = tagColors[i % tagColors.length];
-                    return (
-                      <span key={tag} className="px-3 py-1 rounded-full text-xs font-medium" style={{ background: `${c}20`, color: c }}>
-                        {tag}
-                      </span>
-                    );
-                  })}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* About Teaser */}
-      <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div>
-            <div className="inline-block px-3 py-1 rounded-full bg-[#9ec367]/20 text-[#9ec367] text-xs font-semibold uppercase tracking-wider mb-6">
-              Our Story
-            </div>
-            <h2 className="section-title">Celebrating Atlanta</h2>
-            <p className="text-[#5a5a5a] leading-relaxed mb-6">
-              404Day is a celebration of Atlanta culture — our music, our food, and the community spirit that makes
-              our city special. Every April 4th, we come together in Piedmont Park for a free day of good vibes.
-            </p>
-            <p className="text-[#5a5a5a] leading-relaxed mb-8">
-              From the music to the food to the vibrant community spirit, 404Day has become a highlight of our
-              city&apos;s cultural calendar. We&apos;re grateful for the amazing community that shows up year after year.
-            </p>
-            <Link href="/about" className="btn-primary">
-              Our Full Story →
-            </Link>
-          </div>
-          <div className="relative">
-            <div className="aspect-square rounded-2xl overflow-hidden border border-[#f4b59e]/50 relative">
-              <Image
-                src={`${basePath}/gallery/404day-music-festival-crowd-wide-piedmont-park-atlanta-ga.JPG`}
-                alt="404Day in Piedmont Park, Atlanta"
-                width={600}
-                height={600}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
-                <p className="text-white font-medium text-sm">Est. 2012 · Atlanta, GA</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* CTA Banner */}
       <section className="py-24 px-4 sm:px-6 lg:px-8">
         <div
@@ -212,7 +213,7 @@ export default function HomePage() {
             </div>
             <h2 className="text-4xl sm:text-5xl font-black text-white mb-4">RSVP FREE to 404Day 2026</h2>
             <p className="text-white/80 text-lg max-w-xl mx-auto mb-8">
-              Join us April 4th in Piedmont Park. Music, food, and community — free to attend. We can&apos;t wait to celebrate with you.
+              Join us April 4th in Piedmont Park. Music, food, and community, free to attend. We can&apos;t wait to celebrate with you.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

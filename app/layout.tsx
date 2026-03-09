@@ -5,16 +5,16 @@ import Footer from "./components/Footer";
 import { basePath } from "./lib/constants";
 export const metadata: Metadata = {
   metadataBase: new URL("https://thomasweld.github.io/404day"),
-  title: "404Day — Celebrating Atlanta Culture",
+  title: "404Day: Celebrating Atlanta Culture",
   description:
-    "404Day is an annual celebration of Atlanta culture. Music, food, and community spirit in Piedmont Park — free to attend every April 4th.",
+    "404Day is an annual celebration of Atlanta culture. Music, food, and community spirit in Piedmont Park. Free to attend every April 4th.",
   keywords: ["404day", "404 day", "festival", "Atlanta", "Piedmont Park", "music", "Georgia", "Atlanta culture"],
   icons: {
     icon: "404day-logo-black.png",
     apple: "404day-logo-white.png",
   },
   openGraph: {
-    title: "404Day — Celebrating Atlanta Culture",
+    title: "404Day - Celebrating Atlanta Culture",
     description: "Music, food, and community in Piedmont Park. Free to attend every April 4th.",
     type: "website",
     url: "https://thomasweld.github.io/404day/",

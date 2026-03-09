@@ -1,14 +1,20 @@
 @import "tailwindcss";
 
 @theme {
+  /* 404 Day primary palette */
+  --color-peach: #FF8A3D;
+  --color-blue: #00AEEF;
+  --color-cream: #FDF6E3;
+  --color-midnight: #1A2B3C;
+  --color-green: #4CAF50;
+
+  /* Legacy aliases kept for compatibility */
   --color-peach-yellow: #fac355;
   --color-peach-light: #f4b59e;
-  --color-peach: #f3a65f;
-  --color-peach-coral: #e87851;
-  --color-peach-green: #9ec367;
-  --color-sky: #b8d8e8;
-  --color-field: #a8c98a;
-  --color-cream: #fdf6ee;
+  --color-peach-coral: #FF8A3D;
+  --color-peach-green: #4CAF50;
+  --color-sky: #00AEEF;
+  --color-field: #4CAF50;
 
   --font-sans: "Inter", system-ui, sans-serif;
 }
@@ -22,110 +28,103 @@ html {
 }
 
 body {
-  background-color: #fdf6ee;
-  color: #2d2d2d;
+  background-color: #FDF6E3;
+  color: #1A2B3C;
   font-family: "Inter", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Primary CTA — Peach Coral */
+/* Primary CTA — Vibrant Peach */
 .btn-primary {
-  background: linear-gradient(135deg, #e87851 0%, #f3a65f 100%);
+  background: #FF8A3D;
   color: #ffffff;
   padding: 0.75rem 2rem;
   border-radius: 0.75rem;
-  font-weight: 600;
+  font-weight: 700;
   transition: all 0.25s ease;
   display: inline-block;
   text-decoration: none;
-  box-shadow: 0 4px 14px rgba(232, 120, 81, 0.35);
+  box-shadow: 4px 4px 0px #1A2B3C;
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(232, 120, 81, 0.45);
-  filter: brightness(1.05);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #1A2B3C;
+  filter: brightness(1.08);
 }
 
-/* Secondary — Peach Yellow accent */
+/* Secondary — Green outlined (RSVP / free actions) */
 .btn-secondary {
-  border: 2px solid #e87851;
-  color: #e87851;
+  border: 2px solid #4CAF50;
+  color: #4CAF50;
   padding: 0.75rem 2rem;
   border-radius: 0.75rem;
-  font-weight: 600;
+  font-weight: 700;
   transition: all 0.25s ease;
   display: inline-block;
   text-decoration: none;
 }
 
 .btn-secondary:hover {
-  background: linear-gradient(135deg, #fac355 0%, #f3a65f 100%);
+  background: #4CAF50;
   color: #ffffff;
-  border-color: transparent;
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(250, 195, 85, 0.35);
+  box-shadow: 0 8px 24px rgba(76, 175, 80, 0.35);
 }
 
 /* Section typography */
 .section-title {
   font-size: 2.25rem;
   font-weight: 800;
-  background: linear-gradient(135deg, #e87851 0%, #f3a65f 50%, #fac355 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #1A2B3C;
   margin-bottom: 1rem;
 }
 
 .section-subtitle {
   font-size: 1.125rem;
-  color: #5a5a5a;
+  color: #00AEEF;
   max-width: 640px;
 }
 
-/* Cards — light, warm, Georgia-inspired */
+/* Cards — cream bg, peach top stripe */
 .card {
   background: #ffffff;
   border-radius: 1rem;
   padding: 2rem;
-  border: 1px solid rgba(244, 181, 158, 0.4);
-  box-shadow: 0 2px 12px rgba(232, 120, 81, 0.08);
+  border: 1px solid #E0E0E0;
+  border-top: 4px solid #FF8A3D;
+  box-shadow: 0 2px 12px rgba(26, 43, 60, 0.06);
   transition: all 0.25s ease;
 }
 
 .card:hover {
-  border-color: rgba(232, 120, 81, 0.6);
+  border-color: #E0E0E0;
+  border-top-color: #00AEEF;
   transform: translateY(-2px);
-  box-shadow: 0 12px 32px rgba(232, 120, 81, 0.15);
+  box-shadow: 0 12px 32px rgba(26, 43, 60, 0.12);
 }
 
-/* Gradient text — warm peach spectrum */
+/* Gradient text — solid peach */
 .gradient-text {
-  background: linear-gradient(135deg, #e87851 0%, #f3a65f 35%, #fac355 70%, #9ec367 100%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #FF8A3D;
 }
 
-/* Improve readability of gradient text on hero backgrounds */
+/* Peach text pop on dark hero backgrounds */
 .hero-landscape .gradient-text,
 .hero-peaches .gradient-text {
-  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
 }
 
-/* Hero gradient — blue, red, peach, yellow, green */
+/* Hero gradient — bright Atlanta sky + park, cloud-like, no peach */
 .hero-landscape {
-  background: linear-gradient(
-    180deg,
-    #5a9fd4 0%,
-    #7eb8da 35%,
-    #e87851 55%,
-    #f3a65f 70%,
-    #fac355 85%,
-    #9ec367 100%
-  );
+  background:
+    radial-gradient(ellipse 140% 55% at 15% -10%, #ffffff99 0%, transparent 50%),
+    radial-gradient(ellipse 100% 45% at 80%  -5%, #87CEEB88 0%, transparent 55%),
+    radial-gradient(ellipse  80% 40% at 50%  10%, #ffffff55 0%, transparent 45%),
+    radial-gradient(ellipse 160% 45% at  5% 110%, #9EC36788 0%, transparent 60%),
+    radial-gradient(ellipse 120% 40% at 95% 100%, #9EC36766 0%, transparent 55%),
+    radial-gradient(ellipse  90% 35% at 50% 105%, #87CEEB44 0%, transparent 50%),
+    linear-gradient(180deg, #e8f6fc 0%, #c5e8f5 40%, #d4edcc 100%);
 }
 
 /* Hero with peaches image + transparent gradient overlays */
@@ -134,10 +133,10 @@ body {
   background-position: center;
 }
 html[data-base-path=""] .hero-peaches {
-  background-image: url("/404day-fest-peaches-hero.png?v=3");
+  background-image: url("/404day-atlanta-music-festival-hero.png");
 }
 html[data-base-path="/404day"] .hero-peaches {
-  background-image: url("/404day/404day-fest-peaches-hero.png?v=3");
+  background-image: url("/404day/404day-atlanta-music-festival-hero.png");
 }
 
 /* Dark overlay so white logo + text read clearly */
@@ -161,40 +160,39 @@ html[data-base-path="/404day"] .hero-peaches {
   pointer-events: none;
 }
 
-/* Hero CTA buttons — blue and green */
+/* Hero CTA buttons — Peach primary, Blue secondary */
 .hero-peaches .btn-hero-primary {
-  background: #3b82f6;
+  background: #FF8A3D;
   color: white;
   padding: 0.75rem 2rem;
   border-radius: 0.75rem;
-  font-weight: 600;
+  font-weight: 700;
   transition: all 0.25s ease;
   display: inline-block;
   text-decoration: none;
-  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
+  box-shadow: 4px 4px 0px #1A2B3C;
 }
 
 .hero-peaches .btn-hero-primary:hover {
-  background: #2563eb;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.5);
+  filter: brightness(1.08);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #1A2B3C;
 }
 
 .hero-peaches .btn-hero-secondary {
-  background: #22c55e;
+  background: #00AEEF;
   color: white;
   padding: 0.75rem 2rem;
   border-radius: 0.75rem;
-  font-weight: 600;
+  font-weight: 700;
   transition: all 0.25s ease;
   display: inline-block;
   text-decoration: none;
-  border: 2px solid transparent;
-  box-shadow: 0 4px 14px rgba(34, 197, 94, 0.35);
+  box-shadow: 4px 4px 0px #1A2B3C;
 }
 
 .hero-peaches .btn-hero-secondary:hover {
-  background: #16a34a;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(34, 197, 94, 0.45);
+  filter: brightness(1.08);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #1A2B3C;
 }

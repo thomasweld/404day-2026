@@ -16,7 +16,7 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-[#5a5a5a] text-sm leading-relaxed">
-              An annual celebration of Atlanta culture. Music, food, and community spirit in Piedmont Park — free every April 4th.
+              An annual celebration of Atlanta culture. Music, food, and community spirit in Piedmont Park. Free every April 4th.
             </p>
           </div>
 
