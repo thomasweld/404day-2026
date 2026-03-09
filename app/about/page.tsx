@@ -193,7 +193,7 @@ function TimelineModal({
         {item.image ? (
           <div className="rounded-t-2xl overflow-hidden bg-[#1A2B3C]/5">
             <Image
-              src={item.image}
+              src={`${basePath}${item.image}`}
               alt={item.title}
               width={900}
               height={600}
@@ -473,7 +473,7 @@ function TimelineCard({
         {/* Thumbnail */}
         <div className="aspect-video bg-[#1A2B3C]/8 flex items-center justify-center relative overflow-hidden">
           {item.image ? (
-            <Image src={item.image} alt={item.title} fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
+            <Image src={`${basePath}${item.image}`} alt={item.title} fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
           ) : (
             <div className="flex flex-col items-center gap-1 text-[#1A2B3C]/30 group-hover:text-[#FF8A3D]/60 transition-colors">
               <span className="text-3xl font-black">{item.year}</span>
