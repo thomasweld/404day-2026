@@ -1,46 +1,29 @@
 "use client";
 
 import Image from "next/image";
-import { basePath } from "../lib/constants";
 
-const sponsors = [
-  "ATLTONIGHT LOGO.png",
-  "Captains Of Revelry COR Logo 5x10.png",
-  "IMG_1196.png",
-  "Layer 10.png",
-  "Layer 24.png",
-  "Layer 25.png",
-  "Layer 29.png",
-  "Layer 6.png",
-  "Layer 8.png",
-  "Layer 9.png",
-  "atl edm.png",
-  "bacardi.png",
-  "cloud9.png",
-  "drew foundation.png",
-  "goose.png",
-  "jp.png",
-  "partyfuture.png",
-  "patron.png",
-  "smart.png",
-];
+type Sponsor = {
+  _id: string;
+  name: string;
+  logoUrl: string;
+  url?: string;
+};
 
-export default function SponsorCarousel() {
-  // Duplicate for seamless loop
+export default function SponsorCarousel({ sponsors }: { sponsors: Sponsor[] }) {
   const items = [...sponsors, ...sponsors];
 
   return (
     <div className="w-full bg-white border-y border-[#E0E0E0] overflow-hidden" style={{ height: "110px" }}>
       <div className="flex items-center h-full animate-scroll">
-        {items.map((filename, i) => (
+        {items.map((sponsor, i) => (
           <div
-            key={i}
+            key={`${sponsor._id}-${i}`}
             className="flex-shrink-0 flex items-center justify-center px-8"
             style={{ height: "90px", minWidth: "120px" }}
           >
             <Image
-              src={`${basePath}/sponsors/${encodeURIComponent(filename)}`}
-              alt={filename.replace(/\.[^.]+$/, "")}
+              src={sponsor.logoUrl}
+              alt={sponsor.name}
               width={100}
               height={70}
               className="object-contain max-h-[70px] w-auto opacity-70 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0"

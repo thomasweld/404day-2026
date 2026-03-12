@@ -3,6 +3,9 @@ import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { basePath } from "./lib/constants";
+import { SanityLive } from "@/sanity/lib/live";
+import { VisualEditing } from "next-sanity/visual-editing";
+import { draftMode } from "next/headers";
 export const metadata: Metadata = {
   metadataBase: new URL("https://thomasweld.github.io/404day"),
   title: "404Day: Celebrating Atlanta Culture",
@@ -22,11 +25,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { isEnabled: isDraftMode } = await draftMode();
   return (
     <html lang="en" data-base-path={basePath}>
       <head>
@@ -41,6 +45,8 @@ export default function RootLayout({
         <Header />
         <main className="pt-16">{children}</main>
         <Footer />
+        <SanityLive />
+        {isDraftMode && <VisualEditing />}
       </body>
     </html>
   );
