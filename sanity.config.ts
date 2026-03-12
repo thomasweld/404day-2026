@@ -24,9 +24,7 @@ export default defineConfig({
     structureTool({structure}),
     presentationTool({
       previewUrl: {
-        origin: process.env.NEXT_PUBLIC_VERCEL_URL
-          ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
-          : 'http://localhost:3000',
+        origin: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
         draftMode: {
           enable: '/api/draft-mode/enable',
         },
