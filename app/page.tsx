@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { basePath } from "./lib/constants";
 import FlyerThumbnail from "./components/FlyerThumbnail";
+import SponsorCarousel from "./components/SponsorCarousel";
 
 const upcomingEvents = [
   {
@@ -88,6 +89,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Sponsor Carousel */}
+      <SponsorCarousel />
 
       {/* About Teaser */}
       <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

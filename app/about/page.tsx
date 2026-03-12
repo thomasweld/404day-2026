@@ -13,7 +13,8 @@ const timeline = [
     title: "Jaegervizion at the Clermont Lounge",
     summary: "Mighty High Coup becomes a regular at the legendary Clermont Lounge Wednesday night series.",
     body: `Me and my rap group Mighty High Coup were blessed enough to consistently be asked to be part of an event series at the Clermont Lounge called Jaegervizion, which took place on Wednesday nights. That residency planted the seed for everything that followed.`,
-    image: null,
+    image: "/timeline/jaegervizion-clermont-lounge-atlanta-live-music-2012.webp",
+    imagePosition: "top",
   },
   {
     year: "2012 (March)",
@@ -473,7 +474,7 @@ function TimelineCard({
         {/* Thumbnail */}
         <div className="aspect-video bg-[#1A2B3C]/8 flex items-center justify-center relative overflow-hidden">
           {item.image ? (
-            <Image src={`${basePath}${item.image}`} alt={item.title} fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
+            <Image src={`${basePath}${item.image}`} alt={item.title} fill className={`object-cover group-hover:scale-105 transition-transform duration-300 ${"imagePosition" in item && item.imagePosition === "top" ? "object-top" : "object-center"}`} />
           ) : (
             <div className="flex flex-col items-center gap-1 text-[#1A2B3C]/30 group-hover:text-[#FF8A3D]/60 transition-colors">
               <span className="text-3xl font-black">{item.year}</span>
