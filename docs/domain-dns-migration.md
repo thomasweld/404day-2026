@@ -1,17 +1,17 @@
 # Domain DNS Migration: GoDaddy → Vercel + Google Workspace
 
-Migrating 404day.com from Wix-managed DNS to GoDaddy DNS, pointing the website to Vercel and email to Google Workspace — with zero downtime.
+Migrating 404day.com from Wix-managed DNS to GoDaddy DNS, pointing the website to Vercel and email to Google Workspace — with minimal downtime.
 
 ---
 
 ## Context
 
 - Domain registrar: **GoDaddy**
-- Current nameservers: pointed to **Wix** (no active DNS records in Wix)
-- Website host: **Vercel**
+- Current nameservers: pointed to **Wix** (live site currently hosted on Wix)
+- Website host: **Vercel** (destination)
 - Email provider: **Google Workspace**
 
-Because Wix currently has no active DNS records, there is no live site or email to interrupt. Migration risk is minimal.
+There is a live site on Wix. Expect a brief window of downtime between Wix going offline and Vercel coming online as DNS propagates. This is typically minutes to a few hours depending on ISP propagation speed. **Do the switchover at a low-traffic time (e.g. midnight).** Email risk is separate — see Phase 3.
 
 ---
 
@@ -22,10 +22,13 @@ Do this first. Have all records ready before changing anything.
 ### 1. Add domain to Vercel
 
 1. Go to your Vercel project → **Settings** → **Domains**
-2. Add your domain (e.g. `404day.com`)
-3. Vercel will display the DNS records you need. Save them. They will be:
+2. Add both `404day.com` and `www.404day.com`
+3. Set **`404day.com` as the primary domain** — Vercel will automatically redirect `www.404day.com` → `404day.com`
+4. Vercel will display the DNS records you need — **copy them directly from your Vercel dashboard**, as the CNAME value is project-specific. They will look like:
    - `A record: @ → 76.76.21.21`
-   - `CNAME: www → cname.vercel-dns.com`
+   - `CNAME: www → [your-project-specific-value].vercel-dns.com`
+
+> **Note:** Vercel technically recommends `www` as the primary domain for better CDN routing, but `404day.com` (apex) is set as primary here per project preference. Both work fine.
 
 ### 2. Set up Google Workspace
 
@@ -38,6 +41,8 @@ Do this first. Have all records ready before changing anything.
 ---
 
 ## Phase 2 — Switch nameservers to GoDaddy
+
+> **Do this at a low-traffic time (e.g. midnight).** This is the step that takes the Wix site offline. The new Vercel site will come up as DNS propagates — typically within minutes to a few hours for most visitors.
 
 1. Log into **GoDaddy** → your domain → **DNS**
 2. Find the **Nameservers** section → click **Change**
@@ -63,7 +68,7 @@ Once nameservers are pointing to GoDaddy, add the following records in the GoDad
 
 ### Email (Google Workspace)
 
-**For accounts created after April 2023 — single MX record:**
+**For accounts created after 2023 — single MX record:**
 
 | Type | Name          | Priority | Value              | TTL    |
 |------|---------------|----------|--------------------|--------|
@@ -95,6 +100,30 @@ Once nameservers are pointing to GoDaddy, add the following records in the GoDad
 |------|------|------------------------------------|--------|
 | TXT  | `@`  | `v=spf1 include:_spf.google.com ~all` | 1 hour |
 
+### DKIM (prevents email spoofing — strongly recommended)
+
+DKIM requires generating a key in Google Admin first — you cannot pre-stage this record.
+
+1. Go to **Google Admin Console** → **Apps** → **Google Workspace** → **Gmail** → **Authenticate email**
+2. Select your domain and click **Generate new record** (keep default 2048-bit key)
+3. Google will give you a TXT record to add — it will look like:
+
+| Type | Name                        | Value                  | TTL    |
+|------|-----------------------------|------------------------|--------|
+| TXT  | `google._domainkey`         | `v=DKIM1; k=rsa; p=...` | 1 hour |
+
+4. Add the record in GoDaddy DNS, then return to Google Admin and click **Start authentication**
+
+### DMARC (recommended — add after SPF and DKIM are working)
+
+Start with `p=none` (monitoring only) — this lets you receive reports without risking email delivery.
+
+| Type | Name      | Value                                                              | TTL    |
+|------|-----------|--------------------------------------------------------------------|--------|
+| TXT  | `_dmarc`  | `v=DMARC1; p=none; rua=mailto:info@404day.com`                    | 1 hour |
+
+> Once you've confirmed SPF and DKIM are working and reviewed a few DMARC reports, change `p=none` to `p=quarantine` or `p=reject` for stronger protection.
+
 ---
 
 ## Phase 4 — Verify in Vercel and Google
@@ -102,7 +131,8 @@ Once nameservers are pointing to GoDaddy, add the following records in the GoDad
 ### Vercel
 - Go to your project → **Settings** → **Domains**
 - Vercel auto-checks DNS and shows a green checkmark when records resolve
-- SSL certificate is issued automatically once DNS resolves
+- SSL certificate is issued automatically once DNS resolves — this can take up to 48 hours if DNS is slow to propagate
+- **If SSL fails to provision:** Check whether your domain has existing CAA records from a prior host. If so, add `0 issue "letsencrypt.org"` as a CAA record in GoDaddy. Also remove any existing `_acme-challenge` TXT records left over from Wix.
 
 ### Google Workspace
 - Go to your Google Workspace **Admin Console**
@@ -119,6 +149,8 @@ Once nameservers are pointing to GoDaddy, add the following records in the GoDad
 | Full global DNS propagation    | Up to 48 hours         |
 | Vercel SSL certificate issued  | Minutes after DNS resolves |
 | Google email working           | 1–4 hours after MX records propagate |
+| Wix site goes offline          | As soon as nameservers switch |
+| Vercel site goes live          | As DNS propagates per visitor's ISP — typically minutes to a few hours |
 
 ---
 

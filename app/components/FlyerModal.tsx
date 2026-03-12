@@ -21,8 +21,8 @@ export default function FlyerModal({
   const handleShare = async () => {
     if (navigator.share) {
       await navigator.share({
-        title: "404Day 2026 — April 4th, Piedmont Park",
-        text: "Join us for 404Day 2026! Free to attend. April 4th in Piedmont Park, Atlanta.",
+        title: "404 Day 2026 — April 4th, Piedmont Park",
+        text: "Join us for 404 Day 2026! Free to attend. April 4th in Piedmont Park, Atlanta.",
         url: window.location.href,
       });
     } else {
@@ -52,7 +52,7 @@ export default function FlyerModal({
         {/* Flyer image */}
         <Image
           src={src}
-          alt="404Day 2026 Event Flyer"
+          alt="404 Day 2026 Event Flyer"
           width={800}
           height={1100}
           className="w-full h-auto max-h-[75vh] object-contain rounded-xl shadow-2xl"

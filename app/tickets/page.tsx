@@ -12,7 +12,7 @@ export default function TicketsPage() {
       <section className="relative py-20 overflow-hidden hero-landscape">
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-block px-3 py-1 rounded-full bg-white/60 backdrop-blur border border-[#4CAF50]/50 text-[#1A2B3C] text-xs font-semibold uppercase tracking-wider mb-6">
-            404Day 2026
+            404 Day 2026
           </div>
           <h1 className="text-5xl sm:text-6xl md:text-7xl font-black mb-6">
             <span className="text-[#1A2B3C]">Join Us</span>
@@ -20,7 +20,7 @@ export default function TicketsPage() {
             <span className="gradient-text">April 4th</span>
           </h1>
           <p className="text-lg sm:text-xl text-[#1A2B3C]/70 leading-relaxed max-w-2xl mx-auto">
-            RSVP free for 404Day 2026 in Piedmont Park
+            RSVP free for 404 Day 2026 in Piedmont Park
           </p>
         </div>
       </section>

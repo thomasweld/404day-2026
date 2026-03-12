@@ -250,14 +250,14 @@ function TimelineModal({
 
 const team = [
   { name: "Ricky Raw", role: "Co-Founder", bio: "Bringing Atlanta culture to the park year after year.", color: "#FF8A3D" },
-  { name: "BabeyDrew", role: "Co-Founder", bio: "Creative force behind 404Day's vibrant community spirit.", color: "#fac355" },
+  { name: "BabeyDrew", role: "Co-Founder", bio: "Creative force behind 404 Day's vibrant community spirit.", color: "#fac355" },
   { name: "Vitillaz", role: "Co-Founder", bio: "Keeping the music and vibes flowing every April 4th.", color: "#4CAF50" },
-  { name: "Katy", role: "Co-Founder", bio: "Helping 404Day remain a highlight of Atlanta's cultural calendar.", color: "#00AEEF" },
+  { name: "Katy", role: "Co-Founder", bio: "Helping 404 Day remain a highlight of Atlanta's cultural calendar.", color: "#00AEEF" },
 ];
 
 const values = [
   { icon: "🎵", title: "Music & Culture", description: "We celebrate Atlanta's music, food, and the vibrant community spirit that makes our city special." },
-  { icon: "🆓", title: "Free for Everyone", description: "Thanks to our sponsors, 404Day stays free in the park so everyone can join the celebration." },
+  { icon: "🆓", title: "Free for Everyone", description: "Thanks to our sponsors, 404 Day stays free in the park so everyone can join the celebration." },
   { icon: "🌱", title: "Community First", description: "We exist to bring our city together: neighbors, artists, vendors, and friends." },
   { icon: "🍑", title: "Peach State Pride", description: "A highlight of our city's cultural calendar. We're grateful for the amazing community that shows up." },
 ];
@@ -291,10 +291,10 @@ export default function AboutPage() {
           <h1 className="text-5xl sm:text-6xl md:text-7xl font-black mb-6">
             <span className="text-[#1A2B3C]">15 Years</span>
             <br />
-            <span className="gradient-text">of 404Day</span>
+            <span className="gradient-text">of 404 Day</span>
           </h1>
           <p className="text-lg sm:text-xl text-[#1A2B3C]/70 leading-relaxed max-w-2xl mx-auto">
-            From a FREE show at the Clermont Lounge to thousands in Piedmont Park; check out the full history of 404Day.
+            From a FREE show at the Clermont Lounge to thousands in Piedmont Park; check out the full history of 404 Day.
           </p>
         </div>
       </section>
@@ -349,17 +349,17 @@ export default function AboutPage() {
             <h2 className="section-title">Our Story</h2>
             <div className="space-y-4 text-[#5a5a5a] leading-relaxed">
               <p>
-                404Day is a celebration of Atlanta culture, a nod to our city&apos;s 404 area code and a day to
+                404 Day is a celebration of Atlanta culture, a nod to our city&apos;s 404 area code and a day to
                 come together. Every April 4th, we gather in Piedmont Park for music, food, and the vibrant community
                 spirit that makes our city special.
               </p>
               <p>
-                From the music to the food to the energy in the park, 404Day has become a highlight of our city&apos;s
+                From the music to the food to the energy in the park, 404 Day has become a highlight of our city&apos;s
                 cultural calendar. We&apos;re grateful for the amazing community that shows up year after year.
               </p>
               <p>
                 A special thank you to all of our sponsors, especially our headlining sponsor Patron, for their
-                generous support in keeping this event in the park free each year. Without them, 404Day would not
+                generous support in keeping this event in the park free each year. Without them, 404 Day would not
                 be possible.
               </p>
               <p className="text-[#FF8A3D] font-medium">
@@ -426,7 +426,7 @@ export default function AboutPage() {
         <div className="max-w-3xl mx-auto rounded-3xl p-12 text-center bg-white/80 border border-[#E0E0E0]">
           <h2 className="text-3xl font-black text-[#1A2B3C] mb-4">Join Us April 4th</h2>
           <p className="text-[#5a5a5a] mb-8">
-            Whether you&apos;re coming to enjoy the music and food, or you&apos;re a vendor, performer, or sponsor, there&apos;s a place for you at 404Day.
+            Whether you&apos;re coming to enjoy the music and food, or you&apos;re a vendor, performer, or sponsor, there&apos;s a place for you at 404 Day.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/tickets" className="btn-primary text-center">RSVP FREE</Link>

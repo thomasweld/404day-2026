@@ -24,7 +24,7 @@ export default function EventsPage() {
             Free to Attend
           </div>
           <h1 className="text-5xl sm:text-6xl md:text-7xl font-black mb-6">
-            <span className="text-[#1A2B3C]">404Day 2026</span>
+            <span className="text-[#1A2B3C]">404 Day 2026</span>
             <br />
             <span className="gradient-text">Piedmont Park</span>
           </h1>
@@ -79,7 +79,7 @@ export default function EventsPage() {
           <div className="rounded-2xl overflow-hidden mb-12 aspect-[21/9] max-h-64">
             <Image
               src={`${basePath}/gallery/404day-music-festival-crowd-dj-dance-floor.jpg`}
-              alt="404Day crowd on the dance floor"
+              alt="404 Day crowd on the dance floor"
               width={1200}
               height={400}
               className="w-full h-full object-cover"
@@ -96,7 +96,7 @@ export default function EventsPage() {
               {
                 icon: "🆓",
                 title: "Admission",
-                content: "Free to attend\nThanks to our sponsors for keeping 404Day in the park free every year",
+                content: "Free to attend\nThanks to our sponsors for keeping 404 Day in the park free every year",
                 color: "#9ec367",
               },
             ].map((info) => (

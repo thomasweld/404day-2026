@@ -7,8 +7,8 @@ import FlyerModal from "./FlyerModal";
 const handleShare = async () => {
   if (navigator.share) {
     await navigator.share({
-      title: "404Day 2026 — April 4th, Piedmont Park",
-      text: "Join us for 404Day 2026! Free to attend. April 4th in Piedmont Park, Atlanta.",
+      title: "404 Day 2026 — April 4th, Piedmont Park",
+      text: "Join us for 404 Day 2026! Free to attend. April 4th in Piedmont Park, Atlanta.",
       url: window.location.href,
     });
   } else {
@@ -28,11 +28,11 @@ export default function FlyerThumbnail({ src }: { src: string }) {
         <button
           onClick={() => setOpen(true)}
           className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 cursor-pointer w-full"
-          aria-label="View 404Day 2026 flyer"
+          aria-label="View 404 Day 2026 flyer"
         >
           <Image
             src={src}
-            alt="404Day 2026 Event Flyer"
+            alt="404 Day 2026 Event Flyer"
             width={500}
             height={700}
             className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-[1.02]"

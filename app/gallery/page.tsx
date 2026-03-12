@@ -148,7 +148,7 @@ export default function GalleryPage() {
             <span className="gradient-text">Worth Keeping</span>
           </h1>
           <p className="text-lg sm:text-xl text-[#5a4a3a] leading-relaxed max-w-2xl mx-auto">
-            Music, food, and the vibrant community spirit. This is what 404Day looks like.
+            Music, food, and the vibrant community spirit. This is what 404 Day looks like.
           </p>
         </div>
       </section>
@@ -183,7 +183,7 @@ export default function GalleryPage() {
         </div>
 
         <p className="text-center text-[#5a5a5a] text-sm mt-12">
-          Moments from 404Day in Piedmont Park.
+          Moments from 404 Day in Piedmont Park.
         </p>
       </section>
 
@@ -192,7 +192,7 @@ export default function GalleryPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="section-title">By the Numbers</h2>
-            <p className="section-subtitle mx-auto">Years of 404Day captured in photos and memories.</p>
+            <p className="section-subtitle mx-auto">Years of 404 Day captured in photos and memories.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
@@ -228,7 +228,7 @@ export default function GalleryPage() {
           <div className="text-4xl mb-4">📸</div>
           <h2 className="text-3xl font-black text-[#1A2B3C] mb-4">Were You There?</h2>
           <p className="text-[#5a5a5a] mb-8">
-            We&apos;d love to feature your photos from past 404Day events. Submit your best shots and you might
+            We&apos;d love to feature your photos from past 404 Day events. Submit your best shots and you might
             end up in the official gallery!
           </p>
           <a href="mailto:info@404day.com?subject=Gallery Submission" className="btn-primary">

@@ -30,7 +30,7 @@ const upcomingEvents = [
     id: 1,
     date: "APR 4",
     year: "2026",
-    title: "404Day 2026",
+    title: "404 Day 2026",
     location: "Piedmont Park, Atlanta GA",
     tags: ["Music", "Food", "Community"],
     color: "#e87851",
@@ -76,7 +76,7 @@ export default async function HomePage() {
     .map((s: any) => ({
       _id: s._id,
       name: s.name,
-      logoUrl: urlFor(s.logo).width(200).url(),
+      logoUrl: urlFor(s.logo).url(),
       url: s.url,
     }));
   return (
@@ -88,7 +88,7 @@ export default async function HomePage() {
           <div className="flex justify-center mb-8">
             <Image
               src={`${basePath}/404day-cloud-logo.png`}
-              alt="404Day"
+              alt="404 Day"
               width={480}
               height={240}
               className="drop-shadow-2xl object-contain"
@@ -133,7 +133,7 @@ export default async function HomePage() {
       <section className="py-16 bg-[#e8f0e4]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
-          <h2 className="section-title">{homeData.premierSponsors.heading ?? "404Day Premier Sponsors"}</h2>
+          <h2 className="section-title">{homeData.premierSponsors.heading ?? "404 Day Premier Sponsors"}</h2>
           <p className="section-subtitle mx-auto">{homeData.premierSponsors.subtitle ?? "Thank you to our 2026 Premier Sponsors!"}</p>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -156,27 +156,25 @@ export default async function HomePage() {
             </div>
             <h2 className="section-title">{about?.heading ?? "Celebrating Atlanta"}</h2>
             <p className="text-[#5a5a5a] leading-relaxed mb-6">
-              {about?.body1 ?? "404Day is a celebration of Atlanta culture: our music, our food, and the community spirit that makes our city special. Every April 4th, we come together in Piedmont Park for a free day of good vibes."}
+              {about?.body1 ?? "404 Day is a celebration of Atlanta culture: our music, our food, and the community spirit that makes our city special. Every April 4th, we come together in Piedmont Park for a free day of good vibes."}
             </p>
             <p className="text-[#5a5a5a] leading-relaxed mb-8">
-              {about?.body2 ?? "From the music to the food to the vibrant community spirit, 404Day has become a highlight of our city's cultural calendar. We're grateful for the amazing community that shows up year after year. 2026 marks our 15th annual event, and we're just getting started."}
+              {about?.body2 ?? "From the music to the food to the vibrant community spirit, 404 Day has become a highlight of our city's cultural calendar. We're grateful for the amazing community that shows up year after year. 2026 marks our 15th annual event, and we're just getting started."}
             </p>
             <Link href="/about" className="btn-primary">
               {about?.ctaLabel ?? "Our Full Story →"}
             </Link>
           </div>
           <div className="relative">
-            <div className="aspect-square rounded-2xl overflow-hidden border border-[#f4b59e]/50 relative">
-              <Image
-                src={`${basePath}/gallery/404day-music-festival-crowd-wide-piedmont-park-atlanta-ga.JPG`}
-                alt="404Day in Piedmont Park, Atlanta"
-                width={600}
-                height={600}
+            <div className="aspect-video rounded-2xl overflow-hidden border border-[#f4b59e]/50">
+              <video
+                src={`${basePath}/404day-video.mp4`}
+                controls
+                autoPlay
+                muted
+                playsInline
                 className="w-full h-full object-cover"
               />
-              <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
-                <p className="text-white font-medium text-sm">{about?.caption ?? "Est. 2012 · Atlanta, GA"}</p>
-              </div>
             </div>
           </div>
         </div>
@@ -231,14 +229,18 @@ export default async function HomePage() {
       <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="section-title">{homeData?.features?.heading ?? "What Awaits You"}</h2>
-          <p className="section-subtitle mx-auto">{homeData?.features?.subtitle ?? "Music, food, and the vibrant community spirit that makes 404Day a highlight of Atlanta's cultural calendar."}</p>
+          <p className="section-subtitle mx-auto">{homeData?.features?.subtitle ?? "Music, food, and the vibrant community spirit that makes 404 Day a highlight of Atlanta's cultural calendar."}</p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {(homeData?.features?.items ?? features).map((feature: any) => (
+          {(homeData?.features?.items ?? features).map((feature: any, i: number) => {
+            const imageSrc = feature.image?.asset?._ref
+              ? urlFor(feature.image).width(600).url()
+              : `${basePath}/gallery/${features[i]?.image ?? feature.image}`;
+            return (
             <div key={feature.title} className="card overflow-hidden !p-0">
               <div className="aspect-[4/3] relative">
                 <Image
-                  src={feature.image?.asset ? urlFor(feature.image).width(600).url() : `${basePath}/gallery/${feature.image}`}
+                  src={imageSrc}
                   alt={feature.title}
                   fill
                   className="object-cover"
@@ -250,7 +252,8 @@ export default async function HomePage() {
                 <p className="text-[#5a5a5a] text-sm leading-relaxed">{feature.description}</p>
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 
@@ -266,7 +269,7 @@ export default async function HomePage() {
             <div className="flex justify-center mb-6">
               <Image src={`${basePath}/404day-logo-black.png`} alt="404day" width={80} height={80} className="object-contain" />
             </div>
-            <h2 className="text-4xl sm:text-5xl font-black text-white mb-4">{homeData?.ctaBanner?.heading ?? "RSVP FREE to 404Day 2026"}</h2>
+            <h2 className="text-4xl sm:text-5xl font-black text-white mb-4">{homeData?.ctaBanner?.heading ?? "RSVP FREE to 404 Day 2026"}</h2>
             <p className="text-white/80 text-lg max-w-xl mx-auto mb-8">
               {homeData?.ctaBanner?.subtext ?? "Join us April 4th in Piedmont Park. Music, food, and community, free to attend. We can't wait to celebrate with you."}
             </p>

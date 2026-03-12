@@ -193,19 +193,19 @@ export default function ContactPage() {
             <div className="space-y-4">
               {[
                 {
-                  q: "When and where is 404Day 2026?",
+                  q: "When and where is 404 Day 2026?",
                   a: "April 4th, 2026 at Piedmont Park in Atlanta, Georgia.",
                 },
                 {
                   q: "Is it really free?",
-                  a: "Yes! 404Day is free to attend thanks to our sponsors, especially our headlining sponsor Patron, who help keep this event in the park free every year.",
+                  a: "Yes! 404 Day is free to attend thanks to our sponsors, especially our headlining sponsor Patron, who help keep this event in the park free every year.",
                 },
                 {
                   q: "How do I become a vendor?",
                   a: "Email 404DayVendors@gmail.com with details about your business and what you'd like to offer.",
                 },
                 {
-                  q: "How do I perform at 404Day?",
+                  q: "How do I perform at 404 Day?",
                   a: "Email 404DayArtists@gmail.com with your act and availability. Our team reviews all submissions.",
                 },
                 {

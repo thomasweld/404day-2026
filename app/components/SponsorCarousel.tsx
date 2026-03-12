@@ -10,23 +10,28 @@ type Sponsor = {
 };
 
 export default function SponsorCarousel({ sponsors }: { sponsors: Sponsor[] }) {
-  const items = [...sponsors, ...sponsors];
+  const minCopies = Math.max(2, Math.ceil(12 / sponsors.length));
+  const repeated = Array.from({ length: minCopies }, () => sponsors).flat();
+  const items = [...repeated, ...repeated];
+  // ~2s per item in the scrolling half keeps a consistent speed regardless of count
+  const duration = `${Math.max(20, repeated.length * 2)}s`;
 
   return (
     <div className="w-full bg-white border-y border-[#E0E0E0] overflow-hidden" style={{ height: "110px" }}>
-      <div className="flex items-center h-full animate-scroll">
+      <div className="flex items-center h-full animate-scroll" style={{ animationDuration: duration }}>
         {items.map((sponsor, i) => (
           <div
             key={`${sponsor._id}-${i}`}
-            className="flex-shrink-0 flex items-center justify-center px-8"
-            style={{ height: "90px", minWidth: "120px" }}
+            className="flex-shrink-0 flex items-center justify-center px-6"
+            style={{ height: "90px" }}
           >
             <Image
               src={sponsor.logoUrl}
               alt={sponsor.name}
-              width={100}
-              height={70}
-              className="object-contain max-h-[70px] w-auto opacity-70 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0"
+              width={200}
+              height={60}
+              style={{ width: "auto", height: "auto", maxWidth: "160px", maxHeight: "50px" }}
+              className="opacity-70 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0"
             />
           </div>
         ))}
