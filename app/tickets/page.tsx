@@ -21,10 +21,10 @@ export default function TicketsPage() {
       </section>
 
       {/* Eventbrite Widget */}
-      <style>{`#${CONTAINER_ID} iframe { min-height: 1400px !important; height: 1400px !important; }`}</style>
+      <style>{`#${CONTAINER_ID} iframe { min-height: 1300px !important; height: 1300px !important; }`}</style>
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#9ec367]">
         <div className="max-w-2xl mx-auto">
-          <div id={CONTAINER_ID} style={{ minHeight: "1400px" }} />
+          <div id={CONTAINER_ID} style={{ minHeight: "1300px" }} />
         </div>
       </section>
 
