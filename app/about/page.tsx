@@ -367,8 +367,7 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
-          <div className="space-y-6">
-            <div className="rounded-2xl overflow-hidden aspect-[4/5]">
+          <div className="rounded-2xl overflow-hidden aspect-[4/5]">
               <Image
                 src={`${basePath}/gallery/404day-music-festival-sponsors-patron.JPG`}
                 alt="Patron, our headlining sponsor"
@@ -377,21 +376,6 @@ export default function AboutPage() {
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                { year: "2019", stat: "500", label: "Attendees" },
-                { year: "2020", stat: "2K", label: "Attendees" },
-                { year: "2022", stat: "5K", label: "Attendees" },
-                { year: "2025", stat: "10K+", label: "Attendees" },
-              ].map((item) => (
-                <div key={item.year} className="card text-center">
-                  <div className="text-[#FF8A3D] text-xs font-bold uppercase tracking-widest mb-2">{item.year}</div>
-                  <div className="text-4xl font-black gradient-text">{item.stat}</div>
-                  <div className="text-[#5a5a5a] text-sm mt-1">{item.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 

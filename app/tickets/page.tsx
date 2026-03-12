@@ -35,7 +35,7 @@ export default function TicketsPage() {
             widgetType: "checkout",
             eventId: EVENT_ID,
             iframeContainerId: CONTAINER_ID,
-            iframeContainerHeight: 425,
+            iframeContainerHeight: 1100,
             onOrderComplete: () => {
               console.log("Order complete!");
             },
