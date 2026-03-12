@@ -46,7 +46,7 @@ export default function Header() {
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden nav:flex items-center gap-1">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -64,11 +64,11 @@ export default function Header() {
 
           {/* CTA + Mobile Toggle */}
           <div className="flex items-center gap-3">
-            <Link href="/tickets" className="hidden sm:block btn-primary text-sm py-2 px-4">
+            <Link href="/tickets" className="hidden nav:block btn-primary text-sm py-2 px-4">
               RSVP FREE
             </Link>
             <button
-              className="md:hidden text-[#2d2d2d] p-2 rounded-lg hover:bg-[#f4b59e]/10"
+              className="nav:hidden text-[#2d2d2d] p-2 rounded-lg hover:bg-[#f4b59e]/10"
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label="Toggle menu"
             >
@@ -85,7 +85,7 @@ export default function Header() {
 
         {/* Mobile Nav */}
         {menuOpen && (
-          <div className="md:hidden border-t border-[#f4b59e]/30 py-4">
+          <div className="nav:hidden border-t border-[#f4b59e]/30 py-4">
             <nav className="flex flex-col gap-1">
               {navLinks.map((link) => (
                 <Link

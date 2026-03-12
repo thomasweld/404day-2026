@@ -9,12 +9,17 @@ export default function TicketsPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative py-16 overflow-hidden hero-landscape">
+      <section className="relative py-20 overflow-hidden hero-landscape">
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl sm:text-6xl md:text-7xl font-black text-white drop-shadow-lg">
-            Join Us
+          <div className="inline-block px-3 py-1 rounded-full bg-white/60 backdrop-blur border border-[#4CAF50]/50 text-[#1A2B3C] text-xs font-semibold uppercase tracking-wider mb-6">
+            404Day 2026
+          </div>
+          <h1 className="text-5xl sm:text-6xl md:text-7xl font-black mb-6">
+            <span className="text-[#1A2B3C]">Join Us</span>
+            <br />
+            <span className="gradient-text">April 4th</span>
           </h1>
-          <p className="text-lg sm:text-xl text-white/90 mt-4 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-[#1A2B3C]/70 leading-relaxed max-w-2xl mx-auto">
             RSVP free for 404Day 2026 in Piedmont Park
           </p>
         </div>
@@ -22,7 +27,7 @@ export default function TicketsPage() {
 
       {/* Eventbrite Widget */}
       <style>{`#${CONTAINER_ID} iframe { min-height: 1300px !important; height: 1300px !important; }`}</style>
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#9ec367]">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#fdf6e3]">
         <div className="max-w-2xl mx-auto">
           <div id={CONTAINER_ID} style={{ minHeight: "1300px" }} />
         </div>

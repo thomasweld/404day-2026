@@ -36,8 +36,8 @@ export default function ContactPage() {
     {
       icon: "🛒",
       title: "Vendors",
-      value: "vendors@404day.com",
-      href: "mailto:vendors@404day.com",
+      value: "404DayVendors@gmail.com.com",
+      href: "mailto:404DayVendors@gmail.com.com",
       color: "#e87851",
     },
     {

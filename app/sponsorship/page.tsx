@@ -1,13 +1,6 @@
 import Image from "next/image";
 import { basePath } from "../lib/constants";
 
-const sponsorImages = [
-  { src: "404day-music-festival-sponsors-patron.JPG", alt: "Patron headlining sponsor" },
-  { src: "404day-music-festival-sponsors-xfinity.jpg", alt: "Xfinity sponsor" },
-  { src: "404day-music-festival-sponsors-sprite.jpg", alt: "Sprite sponsor" },
-  { src: "404day-music-festival-vendors-sponsors-bang-energy-drink.jpg", alt: "Bang Energy sponsor" },
-  { src: "404day-music-festival-vitamin-water-vendor.jpg", alt: "Vitamin Water vendor" },
-];
 
 const whySponsor = [
   {
@@ -84,21 +77,50 @@ export default function SponsorshipPage() {
       {/* Sponsors in Action */}
       <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="section-title">Sponsors in Action</h2>
-          <p className="section-subtitle mx-auto">See how our partners show up at 404Day in Piedmont Park.</p>
+          <h2 className="section-title">404Day Premier Sponsors</h2>
+          <p className="section-subtitle mx-auto">Thank you to our 2026 Premier Sponsors!</p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-          {sponsorImages.map((img) => (
-            <div key={img.src} className="aspect-square rounded-2xl overflow-hidden border border-[#f4b59e]/40">
-              <Image
-                src={`${basePath}/gallery/${img.src}`}
-                alt={img.alt}
-                width={300}
-                height={300}
-                className="w-full h-full object-cover"
-              />
-            </div>
-          ))}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          {/* Coca-Cola */}
+          <div className="flex items-center justify-center bg-white rounded-2xl border border-[#f4b59e]/40 p-6 aspect-square">
+            <Image
+              src={`${basePath}/sponsors/CocaCola-404day-music-festival-sponsor.webp`}
+              alt="Coca-Cola"
+              width={200}
+              height={200}
+              className="w-full h-full object-contain"
+            />
+          </div>
+          {/* Patron */}
+          <div className="flex items-center justify-center bg-white rounded-2xl border border-[#f4b59e]/40 p-6 aspect-square">
+            <Image
+              src={`${basePath}/sponsors/Patron-tequila-404day-music-festival-sponsor.png`}
+              alt="Patron Tequila"
+              width={200}
+              height={200}
+              className="w-full h-full object-contain"
+            />
+          </div>
+          {/* MARTA */}
+          <div className="flex items-center justify-center bg-white rounded-2xl border border-[#f4b59e]/40 p-0 aspect-square">
+            <Image
+              src={`${basePath}/sponsors/Marta-404day-music-festival-sponsor.png`}
+              alt="MARTA"
+              width={200}
+              height={200}
+              className="w-full h-full object-contain scale-125"
+            />
+          </div>
+          {/* Comcast Xfinity */}
+          <div className="flex items-center justify-center bg-white rounded-2xl border border-[#f4b59e]/40 p-6 aspect-square">
+            <Image
+              src={`${basePath}/sponsors/Comcast-Xfinity-404day-music-festival-sponsor.png`}
+              alt="Comcast Xfinity"
+              width={200}
+              height={200}
+              className="w-full h-full object-contain"
+            />
+          </div>
         </div>
       </section>
 

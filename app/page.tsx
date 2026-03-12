@@ -93,6 +93,30 @@ export default function HomePage() {
       {/* Sponsor Carousel */}
       <SponsorCarousel />
 
+      {/* Premier Sponsors */}
+      <section className="py-16 bg-[#e8f0e4]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-10">
+          <h2 className="section-title">404Day Premier Sponsors</h2>
+          <p className="section-subtitle mx-auto">Thank you to our 2026 Premier Sponsors!</p>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="flex items-center justify-center bg-white rounded-2xl border border-[#f4b59e]/40 p-6 aspect-square">
+            <Image src={`${basePath}/sponsors/CocaCola-404day-music-festival-sponsor.webp`} alt="Coca-Cola" width={200} height={200} className="w-full h-full object-contain" />
+          </div>
+          <div className="flex items-center justify-center bg-white rounded-2xl border border-[#f4b59e]/40 p-6 aspect-square">
+            <Image src={`${basePath}/sponsors/Patron-tequila-404day-music-festival-sponsor.png`} alt="Patron Tequila" width={200} height={200} className="w-full h-full object-contain" />
+          </div>
+          <div className="flex items-center justify-center bg-white rounded-2xl border border-[#f4b59e]/40 p-0 aspect-square">
+            <Image src={`${basePath}/sponsors/Marta-404day-music-festival-sponsor.png`} alt="MARTA" width={200} height={200} className="w-full h-full object-contain scale-125" />
+          </div>
+          <div className="flex items-center justify-center bg-white rounded-2xl border border-[#f4b59e]/40 p-6 aspect-square">
+            <Image src={`${basePath}/sponsors/Comcast-Xfinity-404day-music-festival-sponsor.png`} alt="Comcast Xfinity" width={200} height={200} className="w-full h-full object-contain" />
+          </div>
+        </div>
+        </div>
+      </section>
+
       {/* About Teaser */}
       <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
