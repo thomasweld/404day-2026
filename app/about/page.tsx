@@ -98,7 +98,7 @@ const timeline = [
     title: "The Bank Vault Venue & Kilo Ali",
     summary: "Two years without a job, a desperate outreach email, and still throwing the coolest party we could.",
     body: `By 2022, I'd been without a job since 2020. I sent emails desperately trying to team up with the largest entity I saw doing a 404 Day event. I felt that without alignment, I'd be steamrolled. My stepdad said the email sounded really desperate, and it was. I wanted a truce and to be one member on a team, not the only member. No response came.\n\nSo I committed to doing the coolest party I could with the resources I had.\n\nBack on a Monday: I rented a small, very cool venue that used to be a bank, with a cool balcony and special bank vault. We booked Kilo Ali and DJ Klever along with Leonce, Miss Evaded & London Re. I bought a couple bottles from Old 4th Distillery and pretended they sponsored.\n\nThe event was dope and almost sold enough to call it a sellout. The music was great but the vibe was medium, to be 100% honest.`,
-    image: "/timeline/404day-atlanta-music-festival-april-4-babey-drew-midnite-panda-2022.jpg",
+    image: "/timeline/404day-atlanta-music-festival-2022.jpg",
   },
   {
     year: "2023",

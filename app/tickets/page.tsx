@@ -1,10 +1,9 @@
 "use client";
 
 import Script from "next/script";
-import { basePath } from "../lib/constants";
 
 const EVENT_ID = "1978977029568";
-const TRIGGER_ID = `eventbrite-widget-modal-trigger-${EVENT_ID}`;
+const CONTAINER_ID = `eventbrite-widget-container-${EVENT_ID}`;
 
 export default function TicketsPage() {
   return (
@@ -22,29 +21,9 @@ export default function TicketsPage() {
       </section>
 
       {/* Eventbrite Widget */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#9ec367] min-h-[40vh] flex items-center justify-center">
-        <div className="text-center">
-          <noscript>
-            <a
-              href={`https://404Day.eventbrite.com`}
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              Buy Tickets on Eventbrite
-            </a>
-          </noscript>
-
-          <button
-            id={TRIGGER_ID}
-            type="button"
-            className="btn-primary text-lg px-10 py-4"
-          >
-            RSVP FREE
-          </button>
-
-          <p className="text-[#1A2B3C]/70 text-sm mt-4">
-            April 4, 2026 · Piedmont Park · Atlanta, GA
-          </p>
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#9ec367]">
+        <div className="max-w-2xl mx-auto">
+          <div id={CONTAINER_ID} />
         </div>
       </section>
 
@@ -55,8 +34,8 @@ export default function TicketsPage() {
           (window as any).EBWidgets.createWidget({
             widgetType: "checkout",
             eventId: EVENT_ID,
-            modal: true,
-            modalTriggerElementId: TRIGGER_ID,
+            iframeContainerId: CONTAINER_ID,
+            iframeContainerHeight: 425,
             onOrderComplete: () => {
               console.log("Order complete!");
             },

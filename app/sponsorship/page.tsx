@@ -98,7 +98,7 @@ export default function SponsorshipPage() {
           <p className="text-lg sm:text-xl text-[#5a4a3a] leading-relaxed max-w-2xl mx-auto mb-10">
             Partner with Atlanta&apos;s premier cultural celebration. Your support helps keep 404Day free in the park and puts your brand in front of our vibrant community.
           </p>
-          <a href="mailto:sponsors@404day.com?subject=Sponsorship%20Inquiry" className="btn-primary text-base px-8 py-4">
+          <a href="mailto:info@404day.com?subject=Sponsorship%20Inquiry" className="btn-primary text-base px-8 py-4">
             Get in Touch
           </a>
         </div>
@@ -191,7 +191,7 @@ export default function SponsorshipPage() {
                 ))}
               </ul>
               <a
-                href="mailto:sponsors@404day.com?subject=Sponsorship%20Inquiry"
+                href="mailto:info@404day.com?subject=Sponsorship%20Inquiry"
                 className="block w-full py-3 rounded-lg font-bold text-sm text-center transition-all"
                 style={
                   tier.popular
@@ -271,11 +271,11 @@ export default function SponsorshipPage() {
             back to you within 24 hours.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="mailto:sponsors@404day.com?subject=Sponsorship%20Inquiry" className="btn-primary text-center">
-              Email sponsors@404day.com
+            <a href="mailto:info@404day.com?subject=Sponsorship%20Inquiry" className="btn-primary text-center">
+              Email info@404day.com
             </a>
           </div>
-          <p className="text-[#5a5a5a] text-xs mt-6">sponsors@404day.com</p>
+          <p className="text-[#5a5a5a] text-xs mt-6">info@404day.com</p>
         </div>
       </section>
     </>

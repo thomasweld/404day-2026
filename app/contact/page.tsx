@@ -29,8 +29,8 @@ export default function ContactPage() {
     {
       icon: "🤝",
       title: "Sponsorship",
-      value: "sponsors@404day.com",
-      href: "mailto:sponsors@404day.com",
+      value: "info@404day.com",
+      href: "mailto:info@404day.com",
       color: "#e87851",
     },
     {
@@ -43,8 +43,8 @@ export default function ContactPage() {
     {
       icon: "🎤",
       title: "Performers & Artists",
-      value: "artists@404day.com",
-      href: "mailto:artists@404day.com",
+      value: "404DayArtists@gmail.com",
+      href: "mailto:404DayArtists@gmail.com",
       color: "#9ec367",
     },
     {
@@ -202,15 +202,15 @@ export default function ContactPage() {
                 },
                 {
                   q: "How do I become a vendor?",
-                  a: "Email vendors@404day.com with details about your business and what you'd like to offer.",
+                  a: "Email 404DayVendors@gmail.com with details about your business and what you'd like to offer.",
                 },
                 {
                   q: "How do I perform at 404Day?",
-                  a: "Email artists@404day.com with your act and availability. Our team reviews all submissions.",
+                  a: "Email 404DayArtists@gmail.com with your act and availability. Our team reviews all submissions.",
                 },
                 {
                   q: "Who do I contact for sponsorship or media?",
-                  a: "Email sponsors@404day.com for sponsorship opportunities and media inquiries.",
+                  a: "Email info@404day.com for sponsorship opportunities and media inquiries.",
                 },
               ].map((faq) => (
                 <div
