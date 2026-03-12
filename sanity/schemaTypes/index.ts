@@ -3,10 +3,11 @@ import { page } from './page'
 import { siteSettings } from './siteSettings'
 import { homePage } from './homePage'
 import { sponsor } from './sponsor'
+import { eventPost } from './eventPost'
 import { hero } from './blocks/hero'
 import { textSection } from './blocks/textSection'
 import { ctaSection } from './blocks/ctaSection'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [page, siteSettings, homePage, sponsor, hero, textSection, ctaSection],
+  types: [page, siteSettings, homePage, sponsor, eventPost, hero, textSection, ctaSection],
 }

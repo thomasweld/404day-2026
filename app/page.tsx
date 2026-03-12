@@ -3,12 +3,17 @@ import Image from "next/image";
 import { basePath } from "./lib/constants";
 import FlyerThumbnail from "./components/FlyerThumbnail";
 import SponsorCarousel from "./components/SponsorCarousel";
+import EventPosts from "./components/EventPosts";
 import { sanityFetch } from "@/sanity/lib/live";
 import { defineQuery } from "groq";
 import { urlFor } from "@/sanity/lib/image";
 
 const SPONSORS_QUERY = defineQuery(
   `*[_type == "sponsor"] | order(order asc) { _id, name, logo, url }`
+);
+
+const EVENT_POSTS_QUERY = defineQuery(
+  `*[_type == "eventPost"] | order(date asc) { _id, title, date, image, description, videoUrl, ticketUrl }`
 );
 
 const HOME_QUERY = defineQuery(
@@ -24,18 +29,6 @@ const HOME_QUERY = defineQuery(
     ctaBanner
   }`
 );
-
-const upcomingEvents = [
-  {
-    id: 1,
-    date: "APR 4",
-    year: "2026",
-    title: "404 Day 2026",
-    location: "Piedmont Park, Atlanta GA",
-    tags: ["Music", "Food", "Community"],
-    color: "#e87851",
-  },
-];
 
 const features = [
   {
@@ -65,9 +58,10 @@ const features = [
 ];
 
 export default async function HomePage() {
-  const [{ data: sponsorDocs }, { data: homeData }] = await Promise.all([
+  const [{ data: sponsorDocs }, { data: homeData }, { data: eventPosts }] = await Promise.all([
     sanityFetch({ query: SPONSORS_QUERY }),
     sanityFetch({ query: HOME_QUERY }),
+    sanityFetch({ query: EVENT_POSTS_QUERY }),
   ]);
   const hero = homeData?.hero;
   const about = homeData?.about;
@@ -198,28 +192,7 @@ export default async function HomePage() {
 
             {/* Event cards */}
             <div className="flex flex-col gap-6">
-              {upcomingEvents.map((event) => (
-                <Link key={event.id} href="/tickets" className="card group cursor-pointer block no-underline">
-                  <div className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: event.color }}>
-                    {event.date} · {event.year}
-                  </div>
-                  <h3 className="text-xl font-bold text-[#1A2B3C] mb-2 group-hover:text-[#FF8A3D] transition-colors">
-                    {event.title}
-                  </h3>
-                  <p className="text-[#5a5a5a] text-sm mb-4">{event.location}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {event.tags.map((tag, i) => {
-                      const tagColors = ["#FF8A3D", "#9ec367", "#00AEEF", "#fac355"];
-                      const c = tagColors[i % tagColors.length];
-                      return (
-                        <span key={tag} className="px-3 py-1 rounded-full text-xs font-medium" style={{ background: `${c}20`, color: c }}>
-                          {tag}
-                        </span>
-                      );
-                    })}
-                  </div>
-                </Link>
-              ))}
+              {eventPosts?.length > 0 && <EventPosts posts={eventPosts} columns={1} />}
             </div>
           </div>
         </div>

@@ -1,6 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
 import { basePath } from "../lib/constants";
+import { sanityFetch } from "@/sanity/lib/live";
+import { defineQuery } from "groq";
+import EventPosts from "../components/EventPosts";
+
+const EVENT_POSTS_QUERY = defineQuery(
+  `*[_type == "eventPost"] | order(date asc) { _id, title, date, image, description, videoUrl, ticketUrl }`
+);
 
 const schedule = [
   { time: "All Day", title: "Music & Performances", stage: "Main Stage", type: "music", image: "404day-music-festival-dj-booth-crop.jpg" },
@@ -14,7 +21,8 @@ const typeColors: Record<string, string> = {
   music: "#e87851",
 };
 
-export default function EventsPage() {
+export default async function EventsPage() {
+  const { data: eventPosts } = await sanityFetch({ query: EVENT_POSTS_QUERY });
   return (
     <>
       {/* Hero */}
@@ -37,10 +45,22 @@ export default function EventsPage() {
         </div>
       </section>
 
+      {/* Event Posts */}
+      {eventPosts?.length > 0 && (
+        <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="section-title">Upcoming Events</h2>
+            <p className="section-subtitle mx-auto">Mark your calendar for these upcoming 404 Day events.</p>
+          </div>
+          <EventPosts posts={eventPosts} />
+        </section>
+      )}
+
       {/* What to Expect */}
-      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-[#e8f0e4]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="section-title">What to Expect</h2>
+          <h2 className="section-title">What to Expect @ 404 Day</h2>
           <p className="section-subtitle mx-auto">From the music to the food to the vibrant community spirit, it&apos;s a day you won&apos;t forget.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -71,12 +91,22 @@ export default function EventsPage() {
             </div>
           ))}
         </div>
+        </div>
       </section>
 
-      {/* Venue Info */}
-      <section className="py-20 bg-[#e8f0e4]">
+      {/* Venue Info + CTA */}
+      <section className="py-20 bg-[#FDF6E3]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="rounded-2xl overflow-hidden mb-12 aspect-[21/9] max-h-64">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-black text-[#2d2d2d] mb-4">Ready to Join Us?</h2>
+            <p className="text-[#5a5a5a] max-w-xl mx-auto mb-8">
+              RSVP free and we&apos;ll see you April 4th in Piedmont Park. Music, food, community. Let&apos;s celebrate Atlanta together.
+            </p>
+            <Link href="/tickets" className="btn-primary inline-block">
+              RSVP FREE
+            </Link>
+          </div>
+          <div className="rounded-2xl overflow-hidden mb-8 aspect-[21/9] max-h-64">
             <Image
               src={`${basePath}/gallery/404day-music-festival-crowd-dj-dance-floor.jpg`}
               alt="404 Day crowd on the dance floor"
@@ -116,17 +146,6 @@ export default function EventsPage() {
             ))}
           </div>
         </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 text-center">
-        <h2 className="text-3xl font-black text-[#2d2d2d] mb-4">Ready to Join Us?</h2>
-        <p className="text-[#5a5a5a] mb-8 max-w-xl mx-auto">
-          RSVP free and we&apos;ll see you April 4th in Piedmont Park. Music, food, community. Let&apos;s celebrate Atlanta together.
-        </p>
-        <Link href="/tickets" className="btn-primary inline-block">
-          RSVP FREE
-        </Link>
       </section>
     </>
   );
