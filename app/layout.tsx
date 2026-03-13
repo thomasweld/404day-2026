@@ -24,6 +24,15 @@ export const metadata: Metadata = {
     url: "https://404day.com",
     images: [{ url: "404day-atlanta-music-festival-flyer.jpg", width: 1200, height: 1200, alt: "404 Day 2026 - Free Music Festival in Piedmont Park, Atlanta" }],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "404 Day - Celebrating Atlanta Culture",
+    description: "Music, food, and community in Piedmont Park. Free to attend every April 4th.",
+    images: ["https://404day.com/404day-atlanta-music-festival-flyer.jpg"],
+  },
+  alternates: {
+    canonical: "https://404day.com",
+  },
 };
 
 export default async function RootLayout({
