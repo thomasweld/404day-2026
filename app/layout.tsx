@@ -44,6 +44,7 @@ export default async function RootLayout({
   return (
     <html lang="en" data-base-path={basePath}>
       <head>
+        <link rel="preload" as="image" href={`${basePath}/404day-atlanta-music-festival-hero.webp`} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
