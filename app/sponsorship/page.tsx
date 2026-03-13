@@ -154,7 +154,7 @@ export default async function SponsorshipPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#e8f0e4]">
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto rounded-3xl p-12 text-center bg-white/80 border border-[#f4b59e]/50">
           <h2 className="text-3xl font-black text-[#2d2d2d] mb-4">Let&apos;s Build Something Together</h2>
           <p className="text-[#5a5a5a] mb-8 leading-relaxed">

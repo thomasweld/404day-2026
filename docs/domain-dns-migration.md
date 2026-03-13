@@ -7,7 +7,7 @@ Migrating 404day.com from Wix-managed DNS to GoDaddy DNS, pointing the website t
 ## Context
 
 - Domain registrar: **GoDaddy**
-- Current nameservers: pointed to **Wix** (live site currently hosted on Wix)
+- Current nameservers: **GoDaddy** (`ns15.domaincontrol.com`, `ns16.domaincontrol.com`) — already switched from Wix
 - Website host: **Vercel** (destination)
 - Email provider: **Google Workspace**
 
@@ -24,45 +24,47 @@ Do this first. Have all records ready before changing anything.
 1. Go to your Vercel project → **Settings** → **Domains**
 2. Add both `404day.com` and `www.404day.com`
 3. Set **`404day.com` as the primary domain** — Vercel will automatically redirect `www.404day.com` → `404day.com`
-4. Vercel will display the DNS records you need — **copy them directly from your Vercel dashboard**, as the CNAME value is project-specific. They will look like:
-   - `A record: @ → 76.76.21.21`
-   - `CNAME: www → [your-project-specific-value].vercel-dns.com`
+4. Vercel will display the DNS records you need — **copy them directly from your Vercel dashboard**. You will get different record types for each domain:
+   - **`404day.com` (apex)** → `A record: @ → 76.76.21.21`
+     CNAMEs cannot be used on apex domains (DNS spec limitation), so Vercel provides an A record instead.
+   - **`www.404day.com`** → `CNAME: www → [your-project-specific-value].vercel-dns.com`
+     The CNAME value is project-specific — use exactly what Vercel shows, not a generic value.
 
-> **Note:** Vercel technically recommends `www` as the primary domain for better CDN routing, but `404day.com` (apex) is set as primary here per project preference. Both work fine.
-
-### 2. Set up Google Workspace
-
-1. Complete signup at [workspace.google.com](https://workspace.google.com)
-2. During setup, Google will provide **MX records** for email routing — save these before proceeding to Phase 2
-3. Google also requires a **TXT verification record** during initial account setup to prove domain ownership — this is a one-time step done when you first create the Workspace account, not during DNS migration. If your account is already set up, this record already exists in your current DNS and will carry over automatically.
+> **Note:** Vercel technically recommends `www` as the primary domain for better CDN routing, but `404day.com` (apex) is the primary here per project preference. To configure this:
+> 1. In your Vercel project → **Settings** → **Domains**, add both `404day.com` and `www.404day.com`
+> 2. Next to `404day.com`, click the **three-dot menu** → **Set as primary**
+> 3. Vercel will automatically configure `www.404day.com` to redirect → `404day.com`
+> 4. Both domains must be added for the redirect to work — adding only the apex will leave `www` unresolved
 
 ---
 
 ## Phase 2 — Switch nameservers to GoDaddy
 
-> **Do this at a low-traffic time (e.g. midnight).** This is the step that takes the Wix site offline. The new Vercel site will come up as DNS propagates — typically within minutes to a few hours for most visitors.
+> **Do this at a low-traffic time (e.g. midnight).** This is the step that takes the Wix site offline. GoDaddy cannot show or accept DNS records while Wix controls the nameservers — so the switch must happen first.
 
 1. Log into **GoDaddy** → your domain → **DNS**
 2. Find the **Nameservers** section → click **Change**
-3. Select **GoDaddy default nameservers**:
-   - `ns1.domaincontrol.com`
-   - `ns2.domaincontrol.com`
-4. Save
+3. A modal will appear — select **GoDaddy Nameservers (recommended)**
+4. Click **Save**
 
-GoDaddy nameservers take effect within minutes. Full global propagation can take up to 48 hours, but is usually much faster.
+GoDaddy nameservers take effect within minutes. Once the DNS panel shows your records, immediately proceed to Phase 3.
 
 ---
 
 ## Phase 3 — Add DNS records in GoDaddy
 
-Once nameservers are pointing to GoDaddy, add the following records in the GoDaddy DNS panel.
+**Do this immediately after switching nameservers.** Have all values from Phase 1 ready to paste — the faster you add these, the shorter the downtime window.
+
+Log into **GoDaddy** → your domain → **DNS** and add the following records.
 
 ### Website (Vercel)
 
-| Type  | Name  | Value                  | TTL     |
-|-------|-------|------------------------|---------|
-| A     | `@`   | `76.76.21.21`          | 1 hour  |
-| CNAME | `www` | `cname.vercel-dns.com` | 1 hour  |
+| Type  | Name  | Value                                        | TTL     |
+|-------|-------|----------------------------------------------|---------|
+| A     | `@`   | `76.76.21.21`                                | 1 hour  |
+| CNAME | `www` | `[your-project-specific-value].vercel-dns.com` | 1 hour  |
+
+> Copy the exact CNAME value from Vercel → **Settings** → **Domains** — it is unique to your project.
 
 ### Email (Google Workspace)
 
@@ -72,35 +74,12 @@ Once nameservers are pointing to GoDaddy, add the following records in the GoDad
 
 > Note: Some registrars require a trailing period: `smtp.google.com.` — GoDaddy does not require this.
 
-### Google Workspace domain verification TXT record
-
-> **Only needed if setting up a new Workspace account.** If your Workspace account already exists and email is working on Wix, this record is already verified — just carry it over to GoDaddy DNS as-is.
-
-| Type | Name | Value                              | TTL    |
-|------|------|------------------------------------|--------|
-| TXT  | `@`  | `google-site-verification=XXXXXXX` | 1 hour |
-
-Replace `XXXXXXX` with the value from your Google Workspace Admin Console → **Domains** → **Manage domains**.
 
 ### SPF record (prevents email spoofing — required)
 
 | Type | Name | Value                              | TTL    |
 |------|------|------------------------------------|--------|
 | TXT  | `@`  | `v=spf1 include:_spf.google.com ~all` | 1 hour |
-
-### DKIM (prevents email spoofing — strongly recommended)
-
-DKIM requires generating a key in Google Admin first — you cannot pre-stage this record.
-
-1. Go to **Google Admin Console** → **Apps** → **Google Workspace** → **Gmail** → **Authenticate email**
-2. Select your domain and click **Generate new record** (keep default 2048-bit key)
-3. Google will give you a TXT record to add — it will look like:
-
-| Type | Name                        | Value                  | TTL    |
-|------|-----------------------------|------------------------|--------|
-| TXT  | `google._domainkey`         | `v=DKIM1; k=rsa; p=...` | 1 hour |
-
-4. Add the record in GoDaddy DNS, then return to Google Admin and click **Start authentication**
 
 ### DMARC (recommended — add after SPF and DKIM are working)
 
@@ -126,6 +105,20 @@ Start with `p=none` (monitoring only) — this lets you receive reports without 
 - Go to your Google Workspace **Admin Console**
 - Follow the domain verification flow — Google checks for your TXT record
 - Once verified, it checks MX records and activates email routing
+
+### DKIM — set up after nameservers are live
+
+DKIM must be configured after GoDaddy is your active nameserver — Google Admin needs to reach your domain's DNS to complete authentication.
+
+1. Go to **Google Admin Console** → **Apps** → **Google Workspace** → **Gmail** → **Authenticate email**
+2. Select your domain and click **Generate new record** (keep default 2048-bit key)
+3. Google will give you a TXT record to add — it will look like:
+
+| Type | Name                  | Value                   | TTL    |
+|------|-----------------------|-------------------------|--------|
+| TXT  | `google._domainkey`   | `v=DKIM1; k=rsa; p=...` | 1 hour |
+
+4. Add the record in GoDaddy DNS, then return to Google Admin and click **Start authentication**
 
 ---
 
