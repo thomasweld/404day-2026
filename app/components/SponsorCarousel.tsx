@@ -23,16 +23,17 @@ export default function SponsorCarousel({ sponsors }: { sponsors: Sponsor[] }) {
           <div
             key={`${sponsor._id}-${i}`}
             className="flex-shrink-0 flex items-center justify-center px-6"
-            style={{ height: "90px", width: "200px" }}
+            style={{ height: "90px", width: "220px" }}
           >
-            <Image
-              src={sponsor.logoUrl}
-              alt={sponsor.name}
-              width={160}
-              height={50}
-              style={{ maxWidth: "160px", maxHeight: "50px", width: "auto", height: "auto" }}
-              className="opacity-70 transition-opacity duration-300 grayscale"
-            />
+            <div className="relative" style={{ width: "180px", height: "70px" }}>
+              <Image
+                src={sponsor.logoUrl}
+                alt={sponsor.name}
+                fill
+                style={{ objectFit: "contain" }}
+                className="sponsor-logo"
+              />
+            </div>
           </div>
         ))}
       </div>
@@ -46,9 +47,18 @@ export default function SponsorCarousel({ sponsors }: { sponsors: Sponsor[] }) {
           animation: scroll 40s linear infinite;
           width: max-content;
         }
+        :global(.sponsor-logo) {
+          opacity: 0.7;
+          filter: grayscale(100%);
+          transition: opacity 0.3s, filter 0.3s;
+        }
         @media (hover: hover) {
           .animate-scroll:hover {
             animation-play-state: paused;
+          }
+          :global(.sponsor-logo):hover {
+            opacity: 1;
+            filter: grayscale(0%);
           }
         }
       `}</style>
