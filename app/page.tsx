@@ -162,13 +162,15 @@ export default async function HomePage() {
           <div className="relative">
             <div className="aspect-video rounded-2xl overflow-hidden border border-[#f4b59e]/50">
               <video
-                src={`${basePath}/404day-video.mp4`}
-                controls
                 autoPlay
                 muted
                 playsInline
+                controls
                 className="w-full h-full object-cover"
-              />
+              >
+                <source src={`${basePath}/404day-video.webm`} type="video/webm" />
+                <source src={`${basePath}/404day-video-optimized.mp4`} type="video/mp4" />
+              </video>
             </div>
           </div>
         </div>
