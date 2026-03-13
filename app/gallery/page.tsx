@@ -187,40 +187,6 @@ export default function GalleryPage() {
         </p>
       </section>
 
-      {/* By the Numbers */}
-      <section className="py-12 bg-[#e8f0e4]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="section-title">By the Numbers</h2>
-            <p className="section-subtitle mx-auto">Years of 404 Day captured in photos and memories.</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              { year: "2023", attendees: "5,000", photos: "1,200+", highlight: "First outdoor main stage", color: "#9ec367" },
-              { year: "2024", attendees: "7,500", photos: "2,400+", highlight: "Added workshop tracks & hackathon", color: "#fac355" },
-              { year: "2025", attendees: "10,000", photos: "4,800+", highlight: "Moved to Centennial Olympic Park", color: "#FF8A3D" },
-            ].map((yr) => (
-              <div key={yr.year} className="card">
-                <div className="text-2xl font-black mb-4" style={{ color: yr.color }}>{yr.year}</div>
-                <div className="space-y-3">
-                  <div className="flex justify-between items-center">
-                    <span className="text-[#5a5a5a] text-sm">Attendees</span>
-                    <span className="text-[#1A2B3C] font-bold">{yr.attendees}</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-[#5a5a5a] text-sm">Photos Taken</span>
-                    <span className="text-[#1A2B3C] font-bold">{yr.photos}</span>
-                  </div>
-                  <div className="pt-3 border-t border-[#E0E0E0]">
-                    <p className="text-xs text-[#5a5a5a]">Highlight</p>
-                    <p className="text-sm text-[#FF8A3D] mt-1">{yr.highlight}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Submit Photos CTA */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 text-center">

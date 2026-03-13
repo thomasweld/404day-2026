@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Script from "next/script";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { basePath } from "./lib/constants";
@@ -42,6 +43,13 @@ export default async function RootLayout({
         />
       </head>
       <body>
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-K5HXGGGNRB" strategy="afterInteractive" />
+        <Script id="gtag-init" strategy="afterInteractive">{`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-K5HXGGGNRB');
+        `}</Script>
         <Header />
         <main className="pt-16">{children}</main>
         <Footer />
