@@ -33,10 +33,8 @@ Do this first. Have all records ready before changing anything.
 ### 2. Set up Google Workspace
 
 1. Complete signup at [workspace.google.com](https://workspace.google.com)
-2. During setup, Google will provide:
-   - A **TXT verification record** (unique to your account)
-   - **MX records** for email routing
-3. Save all of these before proceeding to Phase 2
+2. During setup, Google will provide **MX records** for email routing — save these before proceeding to Phase 2
+3. Google also requires a **TXT verification record** during initial account setup to prove domain ownership — this is a one-time step done when you first create the Workspace account, not during DNS migration. If your account is already set up, this record already exists in your current DNS and will carry over automatically.
 
 ---
 
@@ -68,31 +66,21 @@ Once nameservers are pointing to GoDaddy, add the following records in the GoDad
 
 ### Email (Google Workspace)
 
-**For accounts created after 2023 — single MX record:**
-
 | Type | Name          | Priority | Value              | TTL    |
 |------|---------------|----------|--------------------|--------|
 | MX   | `@` or blank  | `1`      | `smtp.google.com`  | 1 hour |
 
 > Note: Some registrars require a trailing period: `smtp.google.com.` — GoDaddy does not require this.
 
-**For existing accounts using the legacy setup (5 records) — still fully supported:**
+### Google Workspace domain verification TXT record
 
-| Type | Name | Priority | Value                    | TTL    |
-|------|------|----------|--------------------------|--------|
-| MX   | `@`  | 1        | `aspmx.l.google.com`     | 1 hour |
-| MX   | `@`  | 5        | `alt1.aspmx.l.google.com`| 1 hour |
-| MX   | `@`  | 5        | `alt2.aspmx.l.google.com`| 1 hour |
-| MX   | `@`  | 10       | `alt3.aspmx.l.google.com`| 1 hour |
-| MX   | `@`  | 10       | `alt4.aspmx.l.google.com`| 1 hour |
-
-### Google Workspace domain verification
+> **Only needed if setting up a new Workspace account.** If your Workspace account already exists and email is working on Wix, this record is already verified — just carry it over to GoDaddy DNS as-is.
 
 | Type | Name | Value                              | TTL    |
 |------|------|------------------------------------|--------|
 | TXT  | `@`  | `google-site-verification=XXXXXXX` | 1 hour |
 
-> Replace `XXXXXXX` with the unique value Google provides in your Workspace admin console.
+Replace `XXXXXXX` with the value from your Google Workspace Admin Console → **Domains** → **Manage domains**.
 
 ### SPF record (prevents email spoofing — required)
 

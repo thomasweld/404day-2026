@@ -3,19 +3,13 @@
 import { useState } from "react";
 
 export default function ContactPage() {
-  const [formState, setFormState] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
-  const [submitted, setSubmitted] = useState(false);
+  const [formState, setFormState] = useState({ name: "", email: "", subject: "", message: "" });
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    // TODO: Integrate with a backend service (e.g. Resend, Formspree, or a serverless API route)
-    // for production form handling. Currently sets local state for UI feedback only.
-    setSubmitted(true);
+    const { name, email, subject, message } = formState;
+    const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
+    window.location.href = `mailto:ricky@404day.com?subject=${encodeURIComponent(subject || "Contact Form")} - ${encodeURIComponent(name)}&body=${encodeURIComponent(body)}`;
   }
 
   const cardColors = ["#e87851", "#fac355", "#9ec367"];
@@ -148,7 +142,7 @@ export default function ContactPage() {
               Fill out the form and a member of our team will reach out shortly.
             </p>
 
-            {submitted ? (
+            {false ? (
               <div
                 className="p-8 rounded-2xl text-center"
                 style={{
