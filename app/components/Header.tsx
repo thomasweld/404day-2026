@@ -41,7 +41,7 @@ export default function Header() {
               priority
             />
             <span className="text-lg font-black text-[#2d2d2d] hidden sm:block">
-              <span className="gradient-text">404</span>Day
+              <span className="gradient-text">{`404 `}</span>Day
             </span>
           </Link>
 

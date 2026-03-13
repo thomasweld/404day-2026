@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     description: "Music, food, and community in Piedmont Park. Free to attend every April 4th.",
     type: "website",
     url: "https://404day.com",
-    images: [{ url: "404day-logo-white.png", width: 400, height: 400, alt: "404day Festival Logo" }],
+    images: [{ url: "404day-atlanta-music-festival-flyer.jpg", width: 1200, height: 1200, alt: "404 Day 2026 - Free Music Festival in Piedmont Park, Atlanta" }],
   },
 };
 
@@ -43,6 +43,63 @@ export default async function RootLayout({
         />
       </head>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": "Event",
+              "name": "404 Day 2026",
+              "description": "Atlanta's annual free outdoor music and culture festival. Live music, local food vendors, and community spirit in Piedmont Park.",
+              "startDate": "2026-04-04",
+              "endDate": "2026-04-04",
+              "eventStatus": "https://schema.org/EventScheduled",
+              "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+              "isAccessibleForFree": true,
+              "url": "https://404day.com",
+              "image": "https://404day.com/404day-logo-white.png",
+              "location": {
+                "@type": "Place",
+                "name": "Piedmont Park",
+                "address": {
+                  "@type": "PostalAddress",
+                  "streetAddress": "400 Park Dr NE",
+                  "addressLocality": "Atlanta",
+                  "addressRegion": "GA",
+                  "postalCode": "30306",
+                  "addressCountry": "US"
+                }
+              },
+              "organizer": {
+                "@type": "Organization",
+                "name": "404 Day",
+                "url": "https://404day.com"
+              },
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD",
+                "availability": "https://schema.org/InStock",
+                "url": "https://404day.com/tickets"
+              }
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "404 Day",
+              "url": "https://404day.com",
+              "logo": "https://404day.com/404day-logo-black.png",
+              "description": "404 Day is Atlanta's annual free outdoor music and culture festival held every April 4th in Piedmont Park.",
+              "email": "info@404day.com",
+              "telephone": "+14049227545",
+              "sameAs": [
+                "https://www.instagram.com/404day",
+                "https://www.facebook.com/404day",
+                "https://www.tiktok.com/partyinthefuture"
+              ]
+            }
+          ])}}
+        />
         <Script src="https://www.googletagmanager.com/gtag/js?id=G-K5HXGGGNRB" strategy="afterInteractive" />
         <Script id="gtag-init" strategy="afterInteractive">{`
           window.dataLayer = window.dataLayer || [];
